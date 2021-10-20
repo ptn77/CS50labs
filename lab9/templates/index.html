@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>Birthdays</title>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1>Birthdays</h1>
+        </div>
+        <div class="container">
+            <div class="section">
+
+                <h2>Add a Birthday</h2>
+                <!-- Create a form for users to submit a name, a month, and a day -->
+                <form action="/" method="post">
+                    <input type="text" autocomplete="off" autofocus name="name" placeholder="Name">
+                    <input type="text" autocomplete="off" name="month" placeholder="Month">
+                    <input type="text" autocomplete="off" name="day" placeholder="day">
+                    <input type="text" id="action" name="action" hidden>
+                    <input type="submit" id="add" value="Add Birthday">
+                    <input type="submit" id="delete" value="Delete Birthday">
+                </form>
+            </div>
+
+            <div class="section">
+
+                <h2>All Birthdays</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Birthday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through the database entries to display them in this table -->
+                        {% for row in birthdays %}
+                            <tr>
+                                <td>{{ row["name"] }}</td>
+                                <td>{{ row["month"] }}/{{ row["day"] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function(Event){
+                let addBtn = document.querySelector('#add');
+                let deleteBtn = document.querySelector('#delete');
+                var btnAction = document.querySelector('#action');
+                addBtn.addEventListener('click', function(Event){
+                    btnAction.value = 'Add';
+                })
+                deleteBtn.addEventListener('click', function(Event){
+                     btnAction.value = 'Delete';
+                })
+            })
+        </script>
+    </body>
+</html>
