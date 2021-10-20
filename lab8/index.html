@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function(){
+                let check = document.querySelector('#checkAnswer');
+                let bA1 = document.querySelector('#A1');
+                let bA2 = document.querySelector('#A2');
+                let bA3 = document.querySelector('#A3');
+                bA1.addEventListener('click', function(event){
+                    let multi = document.querySelector('#multiMsg');
+                    let button1 = document.querySelector('#A1');
+                    let button2 = document.querySelector('#A2');
+                    let button3 = document.querySelector('#A3');
+                    button2.style.backgroundColor = '#d9edff';
+                    button3.style.backgroundColor = '#d9edff';
+                    button1.style.backgroundColor = 'green';
+                    multi.innerHTML = 'Correct!';
+
+                })
+                bA2.addEventListener('click', function(event){
+                    let multi = document.querySelector('#multiMsg');
+                    let button1 = document.querySelector('#A1');
+                    let button2 = document.querySelector('#A2');
+                    let button3 = document.querySelector('#A3');
+                    button1.style.backgroundColor = '#d9edff';
+                    button2.style.backgroundColor = 'red';
+                    button3.style.backgroundColor = '#d9edff';
+                    multi.innerHTML = 'Incorrect';
+
+                })
+                bA3.addEventListener('click', function(event){
+                    let multi = document.querySelector('#multiMsg');
+                    let button1 = document.querySelector('#A1');
+                    let button2 = document.querySelector('#A2');
+                    let button3 = document.querySelector('#A3');
+                    button1.style.backgroundColor = '#d9edff';
+                    button2.style.backgroundColor = '#d9edff';
+                    button3.style.backgroundColor = 'red';
+                    multi.innerHTML = 'Incorrect';
+
+                })
+                check.addEventListener('click', function(event){
+                    let inMsg = document.querySelector('#inputMsg');
+                    let input = document.querySelector('input');
+                    if (input.value == 'Switzerland'){
+                        inMsg.innerHTML = 'Correct!';
+                    }
+                    else{
+                        inMsg.innerHTML = 'Incorrect';
+                    }
+                })
+            })
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <h3>What is the diameter of the earth?</h3>
+                <p id="multiMsg"></p>
+                <button type="submit" id="A1">127,432 Km</button>
+                <button type="submit" id="A2">507,231 km</button>
+                <button type="submit" id="A3">129,365,123 km</button>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <h3>What country consumes the most chocolate per capita?</h3>
+                <p id="inputMsg"></p>
+                <input id-"freeText" type="text"><button id="checkAnswer">Check Answer</button>
+
+            </div>
+
+        </div>
+    </body>
+</html>
